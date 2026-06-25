@@ -1,0 +1,85 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqk6ed5shwpcg"]
+
+[ext_resource type="Script" uid="uid://uqqdarlco78y" path="res://InterfaceEntrada/OpçõesMeterologia.cs" id="1_44kbd"]
+[ext_resource type="Script" uid="uid://bmjgyhi53a36q" path="res://InterfaceEntrada/TreinarButton.cs" id="2_3rvaa"]
+
+[node name="InterfaceEntrada" type="PanelContainer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 575.0
+offset_bottom = 324.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="IntrerfaceOpções" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="IntrerfaceOpções"]
+layout_mode = 2
+text = "Insira os parametros para o treino do modelo"
+
+[node name="LocalLabel" type="Label" parent="IntrerfaceOpções"]
+layout_mode = 2
+text = "Local"
+
+[node name="Local" type="TextEdit" parent="IntrerfaceOpções"]
+layout_mode = 2
+
+[node name="DataLabel" type="Label" parent="IntrerfaceOpções"]
+layout_mode = 2
+text = "Data de início e fim"
+
+[node name="Data" type="TextEdit" parent="IntrerfaceOpções"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="OpçõesMeterologiaLabel" type="Label" parent="IntrerfaceOpções"]
+layout_mode = 2
+text = "Quais fenomenos meterológicos serão considerados?"
+
+[node name="OpçõesMeterologia" type="GridContainer" parent="IntrerfaceOpções"]
+layout_mode = 2
+columns = 7
+script = ExtResource("1_44kbd")
+
+[node name="CheckButton" type="CheckButton" parent="IntrerfaceOpções/OpçõesMeterologia"]
+layout_mode = 2
+text = "temperature_2m_max"
+icon_alignment = 1
+
+[node name="OpçõesAtivosLabel" type="Label" parent="IntrerfaceOpções"]
+layout_mode = 2
+text = "Quais ativos serão considerados?"
+
+[node name="TextEdit" type="TextEdit" parent="IntrerfaceOpções"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Button" type="Button" parent="IntrerfaceOpções/TextEdit"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -4.0
+offset_right = 47.0
+offset_bottom = 18.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="TreinarButton" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+disabled = true
+text = "Treinar o modelo"
+script = ExtResource("2_3rvaa")
+
+[connection signal="text_changed" from="IntrerfaceOpções/Local" to="TreinarButton" method="_on_local_text_changed"]
